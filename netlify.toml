@@ -2,5 +2,3 @@
   command = "npm run build"
   publish = "dist/i18n-demo/browser"
 
-[[plugins]]
-  package = "@netlify/angular-runtime"

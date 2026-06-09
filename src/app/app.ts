@@ -10,42 +10,56 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./app.css']
 })
 export class App {
+
   private isBrowser: boolean;
 
   constructor(
     private translate: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
+
     this.isBrowser = isPlatformBrowser(this.platformId);
 
-    translate.addLangs(['en', 'es','fr', 'de','hi']);
-    translate.setDefaultLang('en');
+    // Supported languages
+    this.translate.addLangs([
+      'en',
+      'de',
+      'fr',
+      'es',
+      'hi',
+      'mr'
+    ]);
+
+    // Default language
+    this.translate.setDefaultLang('en');
 
     let savedLang: string | null = null;
+
     if (this.isBrowser) {
       savedLang = localStorage.getItem('lang');
     }
-    const browserLang = translate.getBrowserLang();
-    const fallbackLang = 'en';
 
+    // Always start in English if nothing saved
     if (savedLang) {
-      translate.use(savedLang);
-    } else if (browserLang && ['en', 'es','fr', 'de','hi'].includes(browserLang)) {
-      translate.use(browserLang);
+      this.translate.use(savedLang);
     } else {
-      translate.use(fallbackLang);
+      this.translate.use('en');
     }
   }
 
-  switchLanguage(lang: string) {
+  switchLanguage(lang: string): void {
+
     this.translate.use(lang);
+
     if (this.isBrowser) {
       localStorage.setItem('lang', lang);
     }
   }
 
-  onLangChange(event: Event) {
-    const select = event.target as HTMLSelectElement | null;
+  onLangChange(event: Event): void {
+
+    const select = event.target as HTMLSelectElement;
+
     if (select) {
       this.switchLanguage(select.value);
     }

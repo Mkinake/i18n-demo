@@ -8,10 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "extract": "node extract.js",
-    "serve:ssr:i18n-demo": "node dist/i18n-demo/server/server.mjs",
-    "dev:ssr": "ng run i18n-demo:serve-ssr",
-    "build:ssr": "ng build && ng run i18n-demo:server",
-    "serve:ssr": "node dist/i18n-demo/server/server.mjs"
+    "serve:ssr:i18n-demo": "node dist/i18n-demo/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -35,8 +32,8 @@
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.2",
-    "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^6.0.0",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
